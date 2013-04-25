@@ -18,30 +18,23 @@ public class OneToManyReturnB<E> extends OneToManyList<E> implements IOneToManyR
 	
 	/**
 
-	 * Fügt ein Element hinzu, falls dieses noch nicht enthalten ist.
+	 * Fï¿½gt ein Element hinzu, falls dieses noch nicht enthalten ist.
 	 * 
-	 * @param elem Das hinzuzufügende Element.
-	 * @return True wenn Löschen erfolgreich, false bei nicht erfolg.
+	 * @param elem Das hinzuzufï¿½gende Element.
+	 * @return True wenn Lï¿½schen erfolgreich, false bei nicht erfolg.
 	 */
 	@Override
-	public boolean add(E elem) {
-		if(this.contains(elem)) return false;   // O(2n) ??? sinnvoll
-		
-		if(this.isEmpty()) {
-			head = new Node<E>(elem);
-			size++;
-			return true;
-		}
-		else {
-			Node<E> temp = head;
-			while (temp.getNext() != null) {
-				temp = temp.getNext();
-			}
-			temp.setNext(new Node<E>(elem));
-			size++;
-			return true;
-		}
+	 public boolean add(E elem) {
+	 if(elem == null) return false;
+	  if(this.contains(elem)) return false;
 
+	  else {
+	   Node<E> temp = head;
+	head = new Node<E>(elem);
+	   head.setNext(temp);
+	   size++;
+	   return true;
+	  }
 	}
 	
 	
@@ -50,8 +43,8 @@ public class OneToManyReturnB<E> extends OneToManyList<E> implements IOneToManyR
 	 * Entfernt das Element, falls es enthalten ist.
 	 * 
 	 * @param elem
-	 *            Das zu löschende Element.
-	 * @return True wenn Löschen erfolgreich, false bei nicht erfolg.
+	 *            Das zu lï¿½schende Element.
+	 * @return True wenn Lï¿½schen erfolgreich, false bei nicht erfolg.
 	 */
 	@Override
 	public boolean remove(E elem) {
@@ -118,7 +111,7 @@ public class OneToManyReturnB<E> extends OneToManyList<E> implements IOneToManyR
 
         @Override
         public void remove() {
-        	// todo: hasNext() check hier nötig?
+        	// todo: hasNext() check hier nï¿½tig?
             OneToManyReturnB.this.remove(prev.getElem());
             prev = cur;
             cur = cur.getNext();
