@@ -8,9 +8,6 @@ import java.util.Set;
 
 public class OneToManyReturnE<E> extends OneToManyList<E> implements IOneToManyReturnE<E> {
 
-    private Node<E> head = null;
-    private int size = 0;
-
     public OneToManyReturnE() {
     }
 
@@ -20,23 +17,23 @@ public class OneToManyReturnE<E> extends OneToManyList<E> implements IOneToManyR
     }
 
     // CopyConstructor
-    // für ReturnVoid
+    // fï¿½r ReturnVoid
 //    public OneToManyReturnE(IOneToManyReturnVoid<E> aList) {
 //    }
-    // für ReturnBoolean
+    // fï¿½r ReturnBoolean
 //    public OneToManyReturnE(IOneToManyReturnBoolean<E> aList) {
 //    }
     
-    // für Collection
+    // fï¿½r Collection
 	public OneToManyReturnE(Collection<E> coll) {  // Collection<? extends E> coll ?
         addAll(coll);
     }
     
 	/**
-	 * Fügt den Inhalt einer Collection dieser Liste hinzu.
+	 * Fï¿½gt den Inhalt einer Collection dieser Liste hinzu.
 	 * Ohne Duplikate und null-Elemente.
 	 * 
-	 * @param coll Die Collection deren Elemente hinzugefügt werden.
+	 * @param coll Die Collection deren Elemente hinzugefï¿½gt werden.
 	 */
     private void addAll(Collection<E> coll) {  // Collection<? extends E> coll ?
     	if (!coll.isEmpty()) {
@@ -44,7 +41,7 @@ public class OneToManyReturnE<E> extends OneToManyList<E> implements IOneToManyR
     		Iterator<E> iter = tempSet.iterator();
             Node<E> temp = null;
 
-            while (head == null) {	// falls es keine head-Node gibt, diese zuerst anlegen. Null Elemente überspringen.
+            while (head == null) {	// falls es keine head-Node gibt, diese zuerst anlegen. Null Elemente ï¿½berspringen.
                 if (iter.hasNext()) {
                     temp = new Node<>(iter.next());
                     if (temp.getElem() != null) {
@@ -62,7 +59,7 @@ public class OneToManyReturnE<E> extends OneToManyList<E> implements IOneToManyR
             	}
             }
 
-            // Alle Elemente hinzufügen, außer null
+            // Alle Elemente hinzufï¿½gen, auï¿½er null
             while (iter.hasNext()) {
                 Node<E> newNode = new Node<>(iter.next());
                 if (newNode.getElem() != null) {
@@ -75,38 +72,30 @@ public class OneToManyReturnE<E> extends OneToManyList<E> implements IOneToManyR
     }
 
     /**
-     * Fügt ein Element hinzu, falls dieses noch nicht enthalten ist.
+     * Fï¿½gt ein Element hinzu, falls dieses noch nicht enthalten ist.
      * 
-     * @param elem Das hinzuzufügende Element.
-     * @return Das hinzugefügte Element oder null, falls bereits vorhanden.
+     * @param elem Das hinzuzufï¿½gende Element.
+     * @return Das hinzugefï¿½gte Element oder null, falls bereits vorhanden.
      */
     @Override
     public E add(E elem) {
-        if (elem == null) {
-            return null;
-        }
+     if(elem == null) return null;
+     if(this.contains(elem)) return null;
 
-        if (isEmpty()) {
-            head = new Node<E>(elem);
-        } else {
-            Node<E> temp = head;
-            if(head.getElem().equals(elem)) return null; // nicht hinzufügen falls bereits Enthalten
-            while (temp.getNext() != null) {
-                temp = temp.getNext();
-                if(temp.getElem().equals(elem)) return null;  // nicht hinzufügen falls bereits Enthalten
-            }
-            temp.setNext(new Node<E>(elem));
-        }
-
-        size++;
-        return elem;
+     else {
+      Node<E> temp = head;
+   head = new Node<E>(elem);
+      head.setNext(temp);
+      size++;
+      return elem;
+     }
     }
 
     /**
      * Entfernt das Element, falls es enthalten ist.
      * 
-     * @param elem Das zu löschende Element.
-     * @return Das gelöschte Element oder null, falls es nicht enthalten war.
+     * @param elem Das zu lï¿½schende Element.
+     * @return Das gelï¿½schte Element oder null, falls es nicht enthalten war.
      */
     @Override
     public E remove(E elem) {
@@ -144,8 +133,8 @@ public class OneToManyReturnE<E> extends OneToManyList<E> implements IOneToManyR
 
 
     /**
-     * Gibt eine Stringrepräsentation dieses Objekts zurück.
-     * @return Eine Stringrepräsentation dieses Objekts.
+     * Gibt eine Stringreprï¿½sentation dieses Objekts zurï¿½ck.
+     * @return Eine Stringreprï¿½sentation dieses Objekts.
      */
     @Override
     public String toString() {
@@ -197,7 +186,7 @@ public class OneToManyReturnE<E> extends OneToManyList<E> implements IOneToManyR
 
         @Override
         public void remove() {
-        	// todo: hasNext() check hier nötig?
+        	// todo: hasNext() check hier nï¿½tig?
             OneToManyReturnE.this.remove(prev.getElem());
             prev = cur;
             cur = cur.getNext();
