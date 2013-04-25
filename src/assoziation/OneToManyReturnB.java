@@ -25,6 +25,7 @@ public class OneToManyReturnB<E> extends OneToManyList<E> implements IOneToManyR
 	 */
 	@Override
 	 public boolean add(E elem) {
+	 if(elem == null) return false;
 	  if(this.contains(elem)) return false;
 
 	  else {
