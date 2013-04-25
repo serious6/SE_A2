@@ -17,39 +17,32 @@ public class OneToManyVoid<E> extends OneToManyList<E> implements IOneToManyVoid
 	}
 
 	/**
-	 * Fügt ein Element hinzu, falls dieses noch nicht enthalten ist.
+	 * Fï¿½gt ein Element hinzu, falls dieses noch nicht enthalten ist.
 	 * 
 	 * @param elem
-	 *            Das hinzuzufügende Element.
+	 *            Das hinzuzufï¿½gende Element.
 	 * @return void.
 	 */
 	@Override
 	public void add(E elem) {
-		if (contains(elem)) {
-			throw new RuntimeException("Element bereits enthalten");
-		}
-		if (head == null) {
-			head = new Node<E>(elem);
-		} else {
+		if (elem == null)
+			; // exceptions fehlen
+		if (this.contains(elem))
+			; // exeptions fehlen
+
+		else {
 			Node<E> temp = head;
-			boolean fertig = false;
-			while (temp != null && !fertig) {
-				if (temp.getNext() != null) {
-					temp = temp.getNext();
-				} else {
-					temp.setNext(new Node<E>(elem));
-					fertig = true;
-				}
-			}
+			head = new Node<E>(elem);
+			head.setNext(temp);
+			size++;
 		}
-		size++;
 	}
 
 	/**
 	 * Entfernt das Element, falls es enthalten ist.
 	 * 
 	 * @param elem
-	 *            Das zu löschende Element.
+	 *            Das zu lï¿½schende Element.
 	 * @return void.
 	 */
 	@Override
@@ -111,7 +104,7 @@ public class OneToManyVoid<E> extends OneToManyList<E> implements IOneToManyVoid
 
         @Override
         public void remove() {
-        	// todo: hasNext() check hier nötig?
+        	// todo: hasNext() check hier nï¿½tig?
             OneToManyVoid.this.remove(prev.getElem());
             prev = cur;
             cur = cur.getNext();
