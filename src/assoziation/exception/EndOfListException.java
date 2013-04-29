@@ -1,10 +1,10 @@
 package assoziation.exception;
 
 /**
- * EndOfListException
- * 
+ * EndOfListException Abgeleitet von RuntimeException, da diese vom
+ * List-Iterator geworfen wird
  */
-public class EndOfListException extends Exception {
+public class EndOfListException extends RuntimeException {
 
 	private static final long serialVersionUID = -593651786072268717L;
 

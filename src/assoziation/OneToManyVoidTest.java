@@ -1,8 +1,14 @@
 package assoziation;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import assoziation.exception.ElementNotFoundException;
+import assoziation.exception.ListAddedException;
 
 public class OneToManyVoidTest {
 	Order auf1;
@@ -24,15 +30,15 @@ public class OneToManyVoidTest {
 		kunde1 = new CustomerV("kunde1");
 	}
 
-	@Test(expected=RuntimeException.class)
-	public void testAdd() {
+	@Test(expected = RuntimeException.class)
+	public void testAdd() throws ListAddedException {
 		kunde1.add(auf2);
-		// Zweimal Aufträge mit der selben Auftragsnummer werden nicht
-		// hinzugefügt
+		// Zweimal Auftrï¿½ge mit der selben Auftragsnummer werden nicht
+		// hinzugefï¿½gt
 		assertEquals(1, kunde1.size());
 		kunde1.add(auf3);
 		assertEquals(1, kunde1.size());
-		// Wir versuchen zwei identische Aufträge hinzuzufügen
+		// Wir versuchen zwei identische Auftrï¿½ge hinzuzufï¿½gen
 		kunde1.add(auf2);
 		assertEquals(1, kunde1.size());
 		assertTrue(kunde1.contains(auf2));
@@ -40,16 +46,28 @@ public class OneToManyVoidTest {
 
 	@Test
 	public void testRemove() {
-		//kunde1.add(auf4);
-		kunde1.add(auf2);
-		kunde1.remove(auf2);
+		// kunde1.add(auf4);
+		try {
+			kunde1.add(auf2);
+		} catch (ListAddedException e) {
+			e.printStackTrace();
+		}
+		try {
+			kunde1.remove(auf2);
+		} catch (ElementNotFoundException e) {
+			e.printStackTrace();
+		}
 		assertFalse(kunde1.contains(auf2));
 	}
 
 	@Test
 	public void testContains() {
-		kunde1.add(auf2);
-		kunde1.add(auf4);
+		try {
+			kunde1.add(auf2);
+			kunde1.add(auf4);
+		} catch (ListAddedException e) {
+			e.printStackTrace();
+		}
 		assertFalse(kunde1.contains(auf1));
 		assertTrue(kunde1.contains(auf2));
 		assertFalse(kunde1.contains(auf5));
@@ -58,18 +76,30 @@ public class OneToManyVoidTest {
 
 	@Test
 	public void testClear() {
-		kunde1.add(auf2);
-		kunde1.add(auf4);
+		try {
+			kunde1.add(auf2);
+			kunde1.add(auf4);
+		} catch (ListAddedException e) {
+			e.printStackTrace();
+		}
 		kunde1.clear();
 		assertTrue(kunde1.size() == 0);
 	}
 
 	@Test
 	public void testSize() {
-		kunde1.add(auf2);
-		kunde1.add(auf4);
+		try {
+			kunde1.add(auf2);
+			kunde1.add(auf4);
+		} catch (ListAddedException e) {
+			e.printStackTrace();
+		}
 		assertTrue(kunde1.size() == 2);
-		kunde1.remove(auf4);
+		try {
+			kunde1.remove(auf4);
+		} catch (ElementNotFoundException e) {
+			e.printStackTrace();
+		}
 		assertTrue(kunde1.size() == 1);
 	}
 
