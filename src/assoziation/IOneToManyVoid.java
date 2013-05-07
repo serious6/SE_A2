@@ -6,10 +6,12 @@ import assoziation.exception.ListAddedException;
 public interface IOneToManyVoid<E> extends Iterable<E> {
 
 	/**
-	 * F�gt ein Element hinzu, falls dieses noch nicht enthalten ist.
+	 * Fügt ein Element hinzu, falls dieses noch nicht enthalten ist.
 	 * 
 	 * @param elem
-	 *            Das hinzuzuf�gende Element.
+	 *            : Das hinzuzufügende Element.
+	 * @throws ListAddedException
+	 * 
 	 * @return void.
 	 */
 	void add(E elem) throws ListAddedException;
@@ -17,30 +19,32 @@ public interface IOneToManyVoid<E> extends Iterable<E> {
 	/**
 	 * Entfernt das Element, falls es enthalten ist.
 	 * 
-	 * @param elem
-	 *            Das zu l�schende Element.
+	 * @param : das zu löschende Element
+	 * @throws ElementNotFoundException
+	 * 
 	 * @return void.
 	 */
 	void remove(E elem) throws ElementNotFoundException;
 
 	/**
-	 * Pr�ft ob Elemente enthalten sind.
+	 * Prüft ob Elemente enthalten sind.
 	 * 
 	 * @return true falls keine Elemente enthalten sind, false sonst.
 	 */
 	boolean isEmpty();
 
 	/**
-	 * Pr�ft ob das Element enthalten ist.
+	 * Prüft ob das Element enthalten ist.
 	 * 
 	 * @param elem
-	 *            Das zu pr�fende Element.
+	 *            : Das zu prüfende Element.
+	 * 
 	 * @return true wenn das Element enthalten ist, false sonst.
 	 */
 	boolean contains(E elem);
 
 	/**
-	 * Gibt die Anzahl der enthaltenen Elemente zur�ck.
+	 * Gibt die Anzahl der enthaltenen Elemente zurück.
 	 * 
 	 * @return Die Anzahl der enthaltenen Elemente.
 	 */

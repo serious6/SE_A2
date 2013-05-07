@@ -3,11 +3,12 @@ package assoziation;
 public interface IOneToManyReturnE<E> extends Iterable<E> {
 
 	/**
-	 * Fügt ein Element hinzu, falls dieses noch nicht enthalten ist.
+	 * FÃ¼gt ein Element hinzu, falls dieses noch nicht enthalten ist.
 	 * 
 	 * @param elem
-	 *            Das hinzuzufügende Element.
-	 * @return Das hinzugefügte Element oder null, falls bereits vorhanden.
+	 *            : Das hinzuzufÃ¼gende Element.
+	 * 
+	 * @return Das hinzugefÃ¼gte Element oder null, falls bereits vorhanden.
 	 */
 	public E add(E elem);
 
@@ -15,29 +16,32 @@ public interface IOneToManyReturnE<E> extends Iterable<E> {
 	 * Entfernt das Element, falls es enthalten ist.
 	 * 
 	 * @param elem
-	 *            Das zu löschende Element.
-	 * @return Das gelöschte Element oder null, falls es nicht enthalten war.
+	 *            : Das zu lÃ¶schende Element.
+	 * 
+	 * @return Das gelÃ¶schte Element oder null, falls das Element nicht
+	 *         enthalten war.
 	 */
 	public E remove(E elem);
 
 	/**
-	 * Prüft ob Elemente enthalten sind.
+	 * PrÃ¼ft ob Elemente enthalten sind.
 	 * 
 	 * @return true falls keine Elemente enthalten sind, false sonst.
 	 */
 	public boolean isEmpty();
 
 	/**
-	 * Prüft ob das Element enthalten ist.
+	 * PrÃ¼ft ob das Element enthalten ist.
 	 * 
 	 * @param elem
-	 *            Das zu prüfende Element.
+	 *            : Das zu prÃ¼fende Element.
+	 * 
 	 * @return true wenn das Element enthalten ist, false sonst.
 	 */
 	public boolean contains(E elem);
 
 	/**
-	 * Gibt die Anzahl der enthaltenen Elemente zurück.
+	 * Gibt die Anzahl der enthaltenen Elemente zurÃ¼ck.
 	 * 
 	 * @return Die Anzahl der enthaltenen Elemente.
 	 */
